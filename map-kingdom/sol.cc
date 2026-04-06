@@ -74,7 +74,7 @@ int main()
                     contested++;
                 }
 
-                cout << "akhir untuk i: " << i << ", j: " << j << "\n";
+                cout << "akhir untuk i: " << i << ", j: " << j << "\n\n";
             }
 
             cout << "akhir untuk i: " << i << "\n\n";
