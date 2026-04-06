@@ -32,6 +32,8 @@ int main()
                 if (vis[i][j] || grid[i][j] == '#')
                     continue;
 
+                cout << "nilai i: " << i << ", nilai j: " << j << "\n";
+
                 queue<pair<int, int>> q;
                 q.push({i, j});
                 vis[i][j] = true;
@@ -41,6 +43,7 @@ int main()
                 while (!q.empty())
                 {
                     auto [r, c] = q.front();
+                    cout << "nilai r: " << r << ", nilai c: " << c << "\n";
                     q.pop();
 
                     if (grid[r][c] >= 'a' && grid[r][c] <= 'z')
@@ -51,6 +54,7 @@ int main()
                     for (int k = 0; k < 4; ++k)
                     {
                         int nr = r + dr[k], nc = c + dc[k];
+                        cout << "nilai nr: " << nr << ", nilai nc: " << nc << "\n";
                         if (nr < 0 || nr >= N || nc < 0 || nc >= M)
                             continue;
                         if (vis[nr][nc] || grid[nr][nc] == '#')
@@ -62,6 +66,7 @@ int main()
 
                 if (letters.size() == 1)
                 {
+                    cout << "nilai letters: " << *letters.begin() << "\n";
                     controlled[*letters.begin() - 'a']++;
                 }
                 else if (letters.size() >= 2)
