@@ -10,21 +10,25 @@ char* characters;
 int characters_count;
 char* running;
 int running_count;
-void permutations() {
-    cout << "masuk permut, nilai bitmask: " << bitmask << ", nilai running_count: " << running_count << ", dan nilai characters_count: " << characters_count << endl;
+void permutations(int cnt) {
+    cout << "d permuttt, nilai cnt: " << cnt << endl;
     int i;
     if (running_count == characters_count) {
+        cout << "masuk running_count = characters_count, nilai running count: " << running_count << ", permutasi: " << running << endl;
         printf("%s\n", running);
     } else {
         for (i=0; i<characters_count; i++) {
-            cout << "nilai i: " << i << ", nilai bitmask: " << bitmask << ", nilai bitmask >> i: " << (bitmask >> i) << endl;
+            cout << "di dalam for, nilai cnt: " << cnt << ", nilai i: " << i << ", nilai bitmask: " << bitmask << ", nilai bitmask >> i: " << (bitmask >> i) << endl;
             if ( ((bitmask>>i)&1) == 0 ) {
-                cout << "masuk, ketika nilai i: " << i << ", nilai 1 << i: " << (1<<i) << ", nilai characters[i]: " << characters[i] << ", nilai running_count: " << running_count << endl;
+                cout << "masuk, ketika nilai i: " << i << ", nilai characters[i]: " << characters[i] << ", nilai running_count: " << running_count << endl;
                 running[running_count] = characters[i];
                 bitmask |= (1<<i);
                 running_count = running_count + 1;
-                permutations();
+                cout << "sebelum dijalankann permutations, nilai i: " << i << ", nilai bitmask: " << bitmask << ", nilai running_count: " << running_count << endl;
+                permutations(cnt + 1);
                 running_count = running_count - 1;
+                bitmask &= ~(1<<i);
+                cout << "setelah dijalankan permutations, nilai i: " << i << ", nilai bitmask: " << bitmask << ", nilai running_count: " << running_count << endl;
             }
             cout << "akhir untuk nilai i: " << i << ", nilai bitmask: " << bitmask << ", nilai running_count: " << running_count << endl << endl;
         }
@@ -43,7 +47,7 @@ main() {
     memset(running, 0, 30);
     running_count = 0;
 
-    permutations();
+    permutations(0);
 
     free(characters);
     free(running);
